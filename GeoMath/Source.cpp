@@ -1,8 +1,10 @@
 #include "GMath.h"
-
+#include "Shapes.h"
 
 int main()
 {
-    Vector3 a;
+    Vector2 a;
+
+    a *= 2;
 
 }

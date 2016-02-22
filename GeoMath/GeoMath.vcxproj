@@ -120,6 +120,8 @@
   <ItemGroup>
     <ClInclude Include="GMath.h" />
     <ClInclude Include="Matrix3.h" />
+    <ClInclude Include="SAT.h" />
+    <ClInclude Include="Shapes.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
   </ItemGroup>

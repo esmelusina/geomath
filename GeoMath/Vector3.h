@@ -14,14 +14,15 @@ struct Vector3
     float &operator[](size_t idx)       { return v[idx]; }
     float  operator[](size_t idx) const { return v[idx]; }
 
-    Vector3 &operator /=(float a)          { return *this = Vector3{ x / a  , y / a, z/a }; }
-    Vector3 &operator *=(float a)          { return *this = Vector3{ x * a  , y * a, z/a }; }
+    Vector3 &operator /=(float a)          { return *this = Vector3{ x / a  , y / a, z / a }; }
+    Vector3 &operator *=(float a)          { return *this = Vector3{ x * a  , y * a, z / a }; }
     Vector3 &operator -=(const Vector3 &a) { return *this = Vector3{ x - a.x, y - a.y, z-a.z }; }
     Vector3 &operator +=(const Vector3 &a) { return *this = Vector3{ x + a.x, y + a.y, z+a.z }; }
 
     float   magnitude() const { return sqrt(x*x + y*y + z*z); }
     Vector3 normal()    const { return Vector3{ x, y, z } /= magnitude(); }
     Vector3 operator-() const { return{ -x,-y,-z }; }
+
 };
 
 inline float dot(const Vector3 &a, const Vector3 &b)     { return a.x*b.x + a.y*b.y + a.z*b.z; }
@@ -46,7 +47,7 @@ inline Vector3 operator*(Vector3 a, float b)          { return a *= b; }
 inline Vector3 vclamp(const Vector3 &a, const Vector3 &min, const Vector3 &max) { return vmin(max, vmax(a, min)); }
 
 // normal should be normalized
-inline Vector3 reflect(const Vector3 &incident, const Vector3 &normal) { incident - normal * 2 * dot(incident, normal); }
+inline Vector3 reflect(const Vector3 &incident, const Vector3 &normal) { return incident - normal * 2 * dot(incident, normal); }
 
 // normal should be normalized
-inline Vector3 project(const Vector3 &incident, const Vector3 &normal) { normal * dot(incident, normal); }
+inline Vector3 project(const Vector3 &incident, const Vector3 &normal) { return normal * dot(incident, normal); }
